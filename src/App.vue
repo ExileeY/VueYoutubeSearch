@@ -27,6 +27,20 @@
   color: #42b983;
 }
 
+.btn-space-left {
+  margin-left: 3px;
+}
+
+.btn-light {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn-light:hover {
+  color: #fff;
+  background-color: #000;
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
