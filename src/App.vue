@@ -26,4 +26,9 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
