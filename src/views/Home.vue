@@ -1,5 +1,16 @@
 <template>
   <div class="home">
-    <h2>Home</h2>
+    <YoutubeSearch />
   </div>
 </template>
+
+<script>
+import YoutubeSearch from "@/components/YoutubeSearch.vue";
+
+export default {
+  name: "Home",
+  components: {
+    YoutubeSearch,
+  },
+};
+</script>
