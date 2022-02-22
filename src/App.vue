@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
+    <hr/>
   </div>
   <router-view />
 </template>
@@ -10,7 +11,6 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -41,8 +41,7 @@
   background-color: #000;
 }
 
-.center {
-  margin-left: auto;
-  margin-right: auto;
+.center-text {
+  text-align: center;
 }
 </style>

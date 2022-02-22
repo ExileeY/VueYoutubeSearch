@@ -1,5 +1,5 @@
 <template>
-  <AppForm class="center" @submit="fetchVideos">
+  <AppForm class="center-text" @submit="fetchVideos">
     <AppInput type="text" v-model="searchableValue" />
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
