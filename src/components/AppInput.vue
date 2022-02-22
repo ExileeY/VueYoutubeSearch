@@ -10,7 +10,7 @@
 export default {
   name: "AppInput",
   props: ["modelValue"],
-  emits: ["onUpdate:modelValue"],
+  emits: ["update:modelValue"],
 };
 </script>
 
