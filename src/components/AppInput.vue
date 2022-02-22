@@ -7,16 +7,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'AppInput',
-    props: ['modelValue'],
-    emits: ['onUpdate:modelValue']
-  }
+export default {
+  name: "AppInput",
+  props: ["modelValue"],
+  emits: ["onUpdate:modelValue"],
+};
 </script>
 
 <style scoped>
-  .app-input {
-    padding: 10px 8px;
-    margin: 8px 0;
-  }
+.app-input {
+  padding: 10px 8px;
+  margin: 8px 0;
+}
 </style>
