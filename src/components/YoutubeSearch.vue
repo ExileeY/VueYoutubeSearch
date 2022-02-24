@@ -5,14 +5,14 @@
   </AppForm>
 
   <h2 v-if="isLoading">Loading</h2>
-  <h2 v-else-if="videosList">Video Data</h2>
+  <h2 v-else-if="data">Video Data</h2>
 </template>
 
 <script>
 import AppForm from "./AppForm.vue";
 import AppInput from "./AppInput.vue";
 import AppButton from "./AppButton.vue";
-import { fetchVideos } from "../api/youtubeApi";
+import { searchData } from "../api/youtubeApi";
 import { ref } from "vue";
 
 export default {
@@ -21,15 +21,15 @@ export default {
     const searchableValue = ref("");
 
     const isLoading = ref(false);
-    const videosList = ref(null);
+    const data = ref(null);
 
     const handleSubmit = () => {
       isLoading.value = true;
 
-      fetchVideos(searchableValue.value)
+      searchData(searchableValue.value)
         .then((response) => {
           isLoading.value = false;
-          videosList.value = response.data;
+          data.value = response.data;
         })
         .catch((error) => {
           isLoading.value = false;
@@ -41,7 +41,7 @@ export default {
       searchableValue,
       handleSubmit,
       isLoading,
-      videosList,
+      data,
     };
   },
   components: {
