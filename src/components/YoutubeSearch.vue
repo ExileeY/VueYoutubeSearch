@@ -1,57 +1,47 @@
 <template>
   <AppForm class="text-center" @submit="handleSubmit">
-    <AppInput type="text" v-model="searchableValue" />
+    <AppInput type="text" v-model="searchInput" />
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
 
-  <div>
-    <AppLoading v-if="isLoading"/>
-    <h2 v-else-if="data">Video Data</h2>
-  </div>
+  <SearchResults />
 </template>
 
 <script>
 import AppForm from "./AppForm.vue";
 import AppInput from "./AppInput.vue";
 import AppButton from "./AppButton.vue";
-import AppLoading from "./AppLoading.vue";
-import { searchData } from "../api/youtubeApi";
+import SearchResults from "./SearchResults.vue";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   name: "YoutubeSearch",
   setup() {
-    const searchableValue = ref("");
+    const router = useRouter();
 
-    const isLoading = ref(false);
-    const data = ref(null);
-
+    const searchInput = ref("");
     const handleSubmit = () => {
-      isLoading.value = true;
-
-      searchData(searchableValue.value)
-        .then((response) => {
-          isLoading.value = false;
-          data.value = response.data;
-        })
-        .catch((error) => {
-          isLoading.value = false;
-          console.warn(error);
+      if (searchInput.value) {
+        router.push({
+          name: "search",
+          query: {
+            search_query: searchInput.value,
+          },
         });
+      }
     };
 
     return {
-      searchableValue,
+      searchInput,
       handleSubmit,
-      isLoading,
-      data,
     };
   },
   components: {
     AppForm,
     AppInput,
     AppButton,
-    AppLoading,
+    SearchResults,
   },
 };
 </script>
