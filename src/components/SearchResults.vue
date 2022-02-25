@@ -20,12 +20,12 @@ export default {
     const results = ref(null);
 
     const fetchResults = () => {
-      const { search_query } = route.query;
+      const { q: searchableValue } = route.query;
 
-      if (search_query) {
+      if (searchableValue) {
         isLoading.value = true;
 
-        searchData(search_query)
+        searchData(searchableValue)
           .then((response) => {
             isLoading.value = false;
             results.value = response.data;

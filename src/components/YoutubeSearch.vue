@@ -26,7 +26,7 @@ export default {
         router.push({
           name: "search",
           query: {
-            search_query: searchInput.value,
+            q: searchInput.value,
           },
         });
       }
