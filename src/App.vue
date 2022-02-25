@@ -1,12 +1,24 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link>
+    <router-link to="/search">Youtube search</router-link>
     <hr />
   </div>
-  <router-view />
+
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <style>
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,16 +27,23 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin-right: 10px;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
 }
 
 .btn-space-left {
@@ -41,7 +60,7 @@
   background-color: #000;
 }
 
-.center-text {
+.text-center {
   text-align: center;
 }
 </style>
