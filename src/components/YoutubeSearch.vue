@@ -5,7 +5,7 @@
   </AppForm>
 
   <div>
-    <h2 v-if="isLoading">Loading</h2>
+    <AppLoading v-if="isLoading"/>
     <h2 v-else-if="data">Video Data</h2>
   </div>
 </template>
@@ -14,6 +14,7 @@
 import AppForm from "./AppForm.vue";
 import AppInput from "./AppInput.vue";
 import AppButton from "./AppButton.vue";
+import AppLoading from "./AppLoading.vue";
 import { searchData } from "../api/youtubeApi";
 import { ref } from "vue";
 
@@ -50,6 +51,7 @@ export default {
     AppForm,
     AppInput,
     AppButton,
+    AppLoading,
   },
 };
 </script>
