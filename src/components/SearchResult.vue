@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppLoading v-if="isLoading" />
-    <h2 v-else-if="results">Video Data</h2>
+    <ResultItemsList v-else-if="result" :result="result"/>
   </div>
 </template>
 
@@ -12,14 +12,14 @@ import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
-  name: "SearchResults",
+  name: "SearchResult",
   setup() {
     const route = useRoute();
 
     const isLoading = ref(false);
-    const results = ref(null);
+    const result = ref(null);
 
-    const fetchResults = () => {
+    const fetchResult = () => {
       const { q: searchableValue } = route.query;
 
       if (searchableValue) {
@@ -28,7 +28,7 @@ export default {
         searchData(searchableValue)
           .then((response) => {
             isLoading.value = false;
-            results.value = response.data;
+            result.value = response.data;
           })
           .catch((error) => {
             isLoading.value = false;
@@ -37,12 +37,12 @@ export default {
       }
     };
 
-    fetchResults();
-    watch(() => route.query, fetchResults);
+    fetchResult();
+    watch(() => route.query, fetchResult);
 
     return {
       isLoading,
-      results,
+      result,
     };
   },
   components: {

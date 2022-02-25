@@ -4,14 +4,14 @@
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
 
-  <SearchResults />
+  <SearchResult />
 </template>
 
 <script>
 import AppForm from "./AppForm.vue";
 import AppInput from "./AppInput.vue";
 import AppButton from "./AppButton.vue";
-import SearchResults from "./SearchResults.vue";
+import SearchResult from "./SearchResult.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
@@ -41,7 +41,7 @@ export default {
     AppForm,
     AppInput,
     AppButton,
-    SearchResults,
+    SearchResult,
   },
 };
 </script>
