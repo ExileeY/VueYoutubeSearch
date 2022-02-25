@@ -1,11 +1,13 @@
 <template>
-  <AppForm class="center-text" @submit="handleSubmit">
+  <AppForm class="text-center" @submit="handleSubmit">
     <AppInput type="text" v-model="searchableValue" />
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
 
-  <h2 v-if="isLoading">Loading</h2>
-  <h2 v-else-if="data">Video Data</h2>
+  <div>
+    <h2 v-if="isLoading">Loading</h2>
+    <h2 v-else-if="data">Video Data</h2>
+  </div>
 </template>
 
 <script>
