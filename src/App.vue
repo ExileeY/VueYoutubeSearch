@@ -60,11 +60,10 @@ body,
   background-color: #000;
 }
 
-.btn-light
-button:disabled,
+.btn-light button:disabled,
 button[disabled] {
   pointer-events: none;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .block-center {

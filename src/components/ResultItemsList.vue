@@ -1,15 +1,11 @@
 <template>
   <div class="list-items grid space-arround">
-    <div
-      v-for="item in items"
-      :key="item.id"
-      class="item-card"
-    >
+    <div v-for="item in items" :key="item.id" class="item-card">
       <img
         class="block-center"
         :src="item.snippet.thumbnails.medium.url"
         :alt="item.snippet.title"
-      >
+      />
       <h2 class="text-center">
         {{ item.snippet.title }}
       </h2>
@@ -24,7 +20,7 @@
 </template>
 
 <script>
-import AppButton from './AppButton.vue'
+import AppButton from "./AppButton.vue";
 import { computed } from "@vue/runtime-core";
 
 export default {
