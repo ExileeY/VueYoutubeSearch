@@ -60,6 +60,18 @@ body,
   background-color: #000;
 }
 
+.btn-light
+button:disabled,
+button[disabled] {
+  pointer-events: none;
+  opacity: .5;
+}
+
+.block-center {
+  display: block;
+  margin: 0 auto;
+}
+
 .text-center {
   text-align: center;
 }

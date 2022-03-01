@@ -1,12 +1,13 @@
 <template>
   <div>
     <AppLoading v-if="isLoading" />
-    <ResultItemsList v-else-if="result" :result="result"/>
+    <ResultItemsList v-else-if="result" :result="result" />
   </div>
 </template>
 
 <script>
 import AppLoading from "./AppLoading.vue";
+import ResultItemsList from "./ResultItemsList.vue";
 import { searchData } from "../api/youtubeApi";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -47,6 +48,7 @@ export default {
   },
   components: {
     AppLoading,
+    ResultItemsList,
   },
 };
 </script>
