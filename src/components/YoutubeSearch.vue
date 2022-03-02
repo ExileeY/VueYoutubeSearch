@@ -1,5 +1,10 @@
 <template>
   <AppForm class="text-center" @submit="handleSubmit">
+    <select name="item-type" id="item-type" v-model="typeInput">
+      <option value="channel">Channels</option>
+      <option value="video">Videos</option>
+      <option value="playlist">Playlists</option>
+    </select>
     <AppInput type="text" v-model="searchInput" />
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
@@ -21,12 +26,14 @@ export default {
     const router = useRouter();
 
     const searchInput = ref("");
+    const typeInput = ref("channel")
     const handleSubmit = () => {
       if (searchInput.value) {
         router.push({
           name: "search",
           query: {
             q: searchInput.value,
+            type: typeInput.value,
           },
         });
       }
@@ -34,6 +41,7 @@ export default {
 
     return {
       searchInput,
+      typeInput,
       handleSubmit,
     };
   },

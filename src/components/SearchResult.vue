@@ -26,6 +26,7 @@ export default {
 
     const defaultSearchParams = {
       q: route.query.q,
+      type: route.query.type,
     };
     const fetchResult = (searchParams = defaultSearchParams) => {
       if (searchParams.q) {
