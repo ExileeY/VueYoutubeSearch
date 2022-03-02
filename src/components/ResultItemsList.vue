@@ -1,14 +1,20 @@
 <template>
   <div class="list-items grid space-arround">
-    <div v-for="item in items" :key="item.id" class="item-card">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      class="item-card"
+    >
       <img
         class="block-center"
         :src="item.snippet.thumbnails.medium.url"
         :alt="item.snippet.title"
       />
-      <h2 class="text-center">
-        {{ item.snippet.title }}
-      </h2>
+
+      <a :href="itemUrl({ itemType: $route.query.type, itemId: item.id })">
+        <h2 class="text-center">{{ item.snippet.title }}</h2>
+      </a>
+
       <p>{{ item.snippet.description }}</p>
     </div>
   </div>
@@ -50,6 +56,16 @@ export default {
       hasPrevPage: computed(() => !!props.result.prevPageToken),
       hasNextPage: computed(() => !!props.result.nextPageToken),
       items: computed(() => props.result.items),
+      itemUrl: computed(() => ({ itemType, itemId }) => {
+        switch (itemType) {
+          case "video":
+            return `https://www.youtube.com/watch?v=${itemId.videoId}`;
+          case "playlist":
+            return `https://www.youtube.com/playlist?list=${itemId.playlistId}`;
+          default:
+            return null;
+        }
+      }),
     };
   },
   components: {
@@ -68,6 +84,11 @@ export default {
   padding: 10px;
   border: 1px solid black;
   border-radius: 3px;
+}
+.item-card a {
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
 }
 .grid {
   display: flex;
