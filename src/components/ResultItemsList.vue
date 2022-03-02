@@ -14,8 +14,21 @@
   </div>
 
   <div class="nav-buttons space-arround">
-    <AppButton class="btn-light" :disabled="!hasPrevPage">Back</AppButton>
-    <AppButton class="btn-light" :disabled="!hasNextPage">Next</AppButton>
+    <AppButton
+      class="btn-light"
+      :disabled="!hasPrevPage"
+      @click="$emit('prevPage')"
+    >
+      Back
+    </AppButton>
+
+    <AppButton
+      class="btn-light"
+      :disabled="!hasNextPage"
+      @click="$emit('nextPage')"
+    >
+      Next
+    </AppButton>
   </div>
 </template>
 
@@ -31,6 +44,10 @@ export default {
       required: true,
     },
   },
+  emits: [
+    'prevPage',
+    'nextPage'
+  ],
   setup(props) {
     return {
       hasPrevPage: computed(() => !!props.result.prevPageToken),
