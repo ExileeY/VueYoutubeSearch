@@ -53,9 +53,9 @@ export default {
         })
         .catch((error) => {
           isLoading.value = false;
-          console.warn(error)
-        })
-    }
+          console.warn(error);
+        });
+    };
 
     fetchResult();
     watch(() => route.query, fetchResult);

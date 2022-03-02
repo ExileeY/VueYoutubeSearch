@@ -44,7 +44,7 @@ export default {
       required: true,
     },
   },
-  emits: ['switchPage'],
+  emits: ["switchPage"],
   setup(props) {
     return {
       hasPrevPage: computed(() => !!props.result.prevPageToken),
