@@ -1,10 +1,6 @@
 <template>
   <div class="list-items grid space-arround">
-    <div
-      v-for="item in items"
-      :key="item.id"
-      class="item-card"
-    >
+    <div v-for="item in items" :key="item.id" class="item-card">
       <img
         class="block-center"
         :src="item.snippet.thumbnails.medium.url"
