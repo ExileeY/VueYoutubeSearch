@@ -20,16 +20,18 @@ export default {
   name: "SearchResult",
   setup() {
     const route = useRoute();
-    const { q: searchableValue } = route.query;
 
     const isLoading = ref(false);
     const result = ref(null);
 
-    const fetchResult = () => {
-      if (searchableValue) {
+    const defaultSearchParams = {
+      q: route.query.q,
+    };
+    const fetchResult = (searchParams = defaultSearchParams) => {
+      if (searchParams.q) {
         isLoading.value = true;
 
-        searchData({ q: searchableValue })
+        searchData(searchParams)
           .then((response) => {
             isLoading.value = false;
             result.value = response.data;
@@ -41,20 +43,10 @@ export default {
       }
     };
     const switchPage = (pageToken) => {
-      isLoading.value = true;
-
-      searchData({
+      fetchResult({
+        ...defaultSearchParams,
         pageToken,
-        q: searchableValue,
-      })
-        .then((response) => {
-          isLoading.value = false;
-          result.value = response.data;
-        })
-        .catch((error) => {
-          isLoading.value = false;
-          console.warn(error);
-        });
+      });
     };
 
     fetchResult();
