@@ -17,7 +17,7 @@
     <AppButton
       class="btn-light"
       :disabled="!hasPrevPage"
-      @click="$emit('prevPage')"
+      @click="$emit('switchPage', result.prevPageToken)"
     >
       Back
     </AppButton>
@@ -25,7 +25,7 @@
     <AppButton
       class="btn-light"
       :disabled="!hasNextPage"
-      @click="$emit('nextPage')"
+      @click="$emit('switchPage', result.nextPageToken)"
     >
       Next
     </AppButton>
@@ -44,10 +44,7 @@ export default {
       required: true,
     },
   },
-  emits: [
-    'prevPage',
-    'nextPage'
-  ],
+  emits: ['switchPage'],
   setup(props) {
     return {
       hasPrevPage: computed(() => !!props.result.prevPageToken),

@@ -4,8 +4,7 @@
     <ResultItemsList
       v-else-if="result"
       :result="result"
-      @prevPage="prevPage"
-      @nextPage="nextPage"
+      @switchPage="switchPage"
     />
   </div>
 </template>
@@ -41,28 +40,12 @@ export default {
           });
       }
     };
-    const nextPage = () => {
-      isLoading.value = true
+    const switchPage = (pageToken) => {
+      isLoading.value = true;
 
       searchData({
+        pageToken,
         q: searchableValue,
-        pageToken: result.value.nextPageToken
-      })
-        .then((response) => {
-          isLoading.value = false;
-          result.value = response.data;
-        })
-        .catch((error) => {
-          isLoading.value = false;
-          console.warn(error)
-        })
-    }
-    const prevPage = () => {
-      isLoading.value = true
-
-      searchData({
-        q: searchableValue,
-        pageToken: result.value.prevPageToken
       })
         .then((response) => {
           isLoading.value = false;
@@ -80,8 +63,7 @@ export default {
     return {
       isLoading,
       result,
-      prevPage,
-      nextPage,
+      switchPage,
     };
   },
   components: {
