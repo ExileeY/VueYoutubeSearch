@@ -1,10 +1,10 @@
 <template>
   <AppForm class="text-center" @submit="handleSubmit">
-    <select name="item-type" id="item-type" v-model="typeInput">
+    <AppSelect name="item-type" v-model="typeInput">
       <option value="channel">Channels</option>
       <option value="video">Videos</option>
       <option value="playlist">Playlists</option>
-    </select>
+    </AppSelect>
     <AppInput type="text" v-model="searchInput" />
     <AppButton class="btn-light btn-space-left"> Search </AppButton>
   </AppForm>
@@ -14,6 +14,7 @@
 
 <script>
 import AppForm from "./AppForm.vue";
+import AppSelect from "./AppSelect.vue";
 import AppInput from "./AppInput.vue";
 import AppButton from "./AppButton.vue";
 import SearchResult from "./SearchResult.vue";
@@ -26,7 +27,7 @@ export default {
     const router = useRouter();
 
     const searchInput = ref("");
-    const typeInput = ref("channel")
+    const typeInput = ref("channel");
     const handleSubmit = () => {
       if (searchInput.value) {
         router.push({
@@ -47,6 +48,7 @@ export default {
   },
   components: {
     AppForm,
+    AppSelect,
     AppInput,
     AppButton,
     SearchResult,
