@@ -6,13 +6,13 @@ const baseParams = {
   key: process.env.VUE_APP_YOUTUBE_API_KEY,
 };
 
-export const searchData = (optionalParams = {}) => {
+export const searchData = (searchParams = {}) => {
   const url = `${api}/search`;
 
   return axios.get(url, {
     params: {
       ...baseParams,
-      ...optionalParams,
+      ...searchParams,
       part: "snippet",
     },
   });

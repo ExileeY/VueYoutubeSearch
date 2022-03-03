@@ -24,11 +24,13 @@ export default {
     const isLoading = ref(false);
     const result = ref(null);
 
-    const defaultSearchParams = {
-      q: route.query.q,
-      type: route.query.type,
-    };
-    const fetchResult = (searchParams = defaultSearchParams) => {
+    const fetchResult = (optionalParams = {}) => {
+      const searchParams = {
+        ...optionalParams,
+        q: route.query.q,
+        type: route.query.type,
+      };
+
       if (searchParams.q) {
         isLoading.value = true;
 
@@ -43,12 +45,7 @@ export default {
           });
       }
     };
-    const switchPage = (pageToken) => {
-      fetchResult({
-        ...defaultSearchParams,
-        pageToken,
-      });
-    };
+    const switchPage = (pageToken) => fetchResult({ pageToken });
 
     fetchResult();
     watch(() => route.query, fetchResult);
