@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <YoutubeSearch />
-  </div>
+  <YoutubeSearch />
 </template>
 
 <script>
