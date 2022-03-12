@@ -1,9 +1,7 @@
 <template>
-  <div class="overlay">
-    <p class="content">
-      {{ content }}
-    </p>
-  </div>
+  <p class="content">
+    {{ content }}
+  </p>
 </template>
 
 <script>
@@ -45,7 +43,6 @@ export default {
 
 <style scoped>
 .content {
-  color: white;
   font-size: 35px;
   position: absolute;
   left: 0;

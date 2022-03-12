@@ -1,7 +1,9 @@
 <template>
   <div>
     <Teleport to="#loading">
-      <AppLoading v-if="isLoading" />
+      <Overlay v-if="isLoading">
+        <AppLoading/>
+      </Overlay>
     </Teleport>
 
     <ResultItemsList
@@ -13,6 +15,7 @@
 </template>
 
 <script>
+import Overlay from "./Overlay.vue"
 import AppLoading from "./AppLoading.vue";
 import ResultItemsList from "./ResultItemsList.vue";
 import { searchData } from "../api/youtubeApi";
@@ -61,6 +64,7 @@ export default {
     };
   },
   components: {
+    Overlay,
     AppLoading,
     ResultItemsList,
   },
