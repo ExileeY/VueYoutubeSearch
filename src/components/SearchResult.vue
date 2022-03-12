@@ -29,6 +29,7 @@ export default {
         ...optionalParams,
         q: route.query.q,
         type: route.query.type,
+        maxResults: 20,
       };
 
       if (searchParams.q) {
