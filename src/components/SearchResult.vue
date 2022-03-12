@@ -1,8 +1,11 @@
 <template>
   <div>
-    <AppLoading v-if="isLoading" />
+    <Teleport to="#loading">
+      <AppLoading v-if="isLoading" />
+    </Teleport>
+
     <ResultItemsList
-      v-else-if="result"
+      v-if="result"
       :result="result"
       @switchPage="switchPage"
     />
