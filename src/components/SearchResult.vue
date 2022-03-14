@@ -2,39 +2,38 @@
   <div>
     <Teleport to="#loading">
       <Overlay v-if="isLoading">
-        <AppLoading/>
+        <AppLoading />
       </Overlay>
     </Teleport>
 
-    <ResultItemsList
-      v-if="result"
-      :result="result"
-      @switchPage="switchPage"
-    />
+    <ResultItemsList v-if="result" :result="result" @switchPage="switchPage" />
   </div>
 </template>
 
 <script>
-import Overlay from "./Overlay.vue"
+import Overlay from "./Overlay.vue";
 import AppLoading from "./AppLoading.vue";
 import ResultItemsList from "./ResultItemsList.vue";
 import { searchData } from "../api/youtubeApi";
 import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
   name: "SearchResult",
   setup() {
+    const router = useRouter();
     const route = useRoute();
 
     const isLoading = ref(false);
     const result = ref(null);
 
-    const fetchResult = (optionalParams = {}) => {
+    const fetchResult = () => {
+      const { q, type, pageToken } = route.query;
+
       const searchParams = {
-        ...optionalParams,
-        q: route.query.q,
-        type: route.query.type,
+        q,
+        type,
+        pageToken,
         maxResults: 20,
       };
 
@@ -52,10 +51,26 @@ export default {
           });
       }
     };
-    const switchPage = (pageToken) => fetchResult({ pageToken });
+    const switchPage = (pageToken) =>
+      router.push({
+        name: "search",
+        query: {
+          ...route.query,
+          posHeight: null,
+          posWidth: null,
+          pageToken,
+        },
+      });
 
     fetchResult();
-    watch(() => route.query, fetchResult);
+    watch(
+      [
+        () => route.query.q,
+        () => route.query.type,
+        () => route.query.pageToken
+      ],
+      fetchResult
+    );
 
     return {
       isLoading,

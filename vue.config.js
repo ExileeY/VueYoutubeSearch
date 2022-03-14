@@ -7,5 +7,5 @@ module.exports = {
         patterns: [{ from: "_redirects" }],
       }),
     ],
-  }
+  },
 };
