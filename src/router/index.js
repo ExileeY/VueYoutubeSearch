@@ -20,19 +20,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  scrollBehavior: (to)  => {
+  scrollBehavior: (to) => {
     const { posHeight, posWidth } = to.query;
 
-    if (to.params.savePosition) return {}
+    if (to.params.savePosition) return {};
 
     if (posHeight && posWidth) {
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve({ top: posHeight, left: posWidth, behavior: 'smooth' })
-        }, 1000)
-      })
+          resolve({ top: posHeight, left: posWidth, behavior: "smooth" });
+        }, 1000);
+      });
     } else {
-      return { top: 0, left: 0, behavior: 'smooth' }
+      return { top: 0, left: 0, behavior: "smooth" };
     }
   },
 });
