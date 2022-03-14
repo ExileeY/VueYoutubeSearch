@@ -23,6 +23,8 @@ const router = createRouter({
   scrollBehavior: (to)  => {
     const { posHeight, posWidth } = to.query;
 
+    if (to.params.savePosition) return {}
+
     if (posHeight && posWidth) {
       return new Promise((resolve) => {
         setTimeout(() => {
