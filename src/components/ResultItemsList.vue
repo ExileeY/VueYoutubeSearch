@@ -58,6 +58,8 @@ export default {
             return `https://www.youtube.com/watch?v=${itemId.videoId}`;
           case "playlist":
             return `https://www.youtube.com/playlist?list=${itemId.playlistId}`;
+          case "channel":
+            return `https://www.youtube.com/channel/${itemId.channelId}`;
           default:
             return null;
         }
