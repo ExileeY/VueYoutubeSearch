@@ -17,14 +17,12 @@ import ResultItemsList from "./ResultItemsList.vue";
 import { searchData } from "../api/youtubeApi";
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import useScrollListener from "../hooks/useScrollListener";
 
 export default {
   name: "SearchResult",
   setup() {
     const router = useRouter();
     const route = useRoute();
-    const currentScrollPosition = useScrollListener();
 
     const isLoading = ref(false);
     const result = ref(null);
@@ -58,8 +56,6 @@ export default {
         name: "search",
         query: {
           ...route.query,
-          posHeight: null,
-          posWidth: null,
           pageToken,
         },
       });
@@ -72,19 +68,6 @@ export default {
         () => route.query.pageToken,
       ],
       fetchResult
-    );
-
-    watch(currentScrollPosition, () =>
-      router.replace({
-        name: "search",
-        query: {
-          ...route.query,
-          ...currentScrollPosition.value,
-        },
-        params: {
-          savePosition: true,
-        },
-      })
     );
 
     return {
