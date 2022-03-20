@@ -27,8 +27,6 @@ const router = createRouter({
           resolve({ ...savedPosition, behavior: "smooth" });
         }, 1000);
       });
-    } else {
-      return { top: 0, left: 0, behavior: "smooth" };
     }
   },
 });

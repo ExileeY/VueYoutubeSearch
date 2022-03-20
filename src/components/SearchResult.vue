@@ -17,12 +17,14 @@ import ResultItemsList from "./ResultItemsList.vue";
 import { searchData } from "../api/youtubeApi";
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import useScrollBehavior from "../hooks/useScrollBehavior";
 
 export default {
   name: "SearchResult",
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const { scrollToTop } = useScrollBehavior();
 
     const isLoading = ref(false);
     const result = ref(null);
@@ -51,7 +53,7 @@ export default {
           });
       }
     };
-    const switchPage = (pageToken) =>
+    const switchPage = (pageToken) => {
       router.push({
         name: "search",
         query: {
@@ -59,6 +61,8 @@ export default {
           pageToken,
         },
       });
+      scrollToTop();
+    };
 
     fetchResult();
     watch(
