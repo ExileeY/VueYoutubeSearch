@@ -1,7 +1,7 @@
 import $ from "jquery";
 
 const useScrollBehavior = () => {
-  const scrollToTop = ({ duration } = { duration: 1000 }) => {
+  const scrollToTop = ({ duration } = { duration: 3000 }) => {
     $("html, body").animate({ scrollTop: 0 }, duration);
   };
 
