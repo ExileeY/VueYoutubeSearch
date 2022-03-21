@@ -61,7 +61,7 @@ export default {
           pageToken,
         },
       });
-      scrollToTop();
+      scrollToTop({ delay: 1000 });
     };
 
     fetchResult();
