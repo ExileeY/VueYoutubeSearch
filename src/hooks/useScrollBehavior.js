@@ -4,7 +4,7 @@ const useScrollBehavior = () => {
   const scrollToTop = ({ duration = 3000, delay = 0 } = {}) => {
     setTimeout(() => {
       $("html, body").animate({ scrollTop: 0 }, duration);
-    }, delay)
+    }, delay);
   };
 
   return { scrollToTop };
